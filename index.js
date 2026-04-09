@@ -10,6 +10,11 @@ function createBot() {
 
   bot.on('spawn', () => {
     console.log('Joined server')
+
+    // Run /register command after 5 seconds to ensure server is ready
+    setTimeout(() => {
+      bot.chat('/register mybot123 mybot123')
+    }, 5000)
   })
 
   bot.on('end', () => {
@@ -20,9 +25,9 @@ function createBot() {
   bot.on('error', console.log)
 }
 
-createBot()
-
-// keeps hosting service alive
+// Keep hosting service alive
 require('http').createServer((req, res) => {
   res.end('alive')
 }).listen(3000)
+
+createBot()
