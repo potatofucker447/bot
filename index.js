@@ -14,11 +14,11 @@ function createBot() {
     // Delay to ensure server is ready
     setTimeout(() => {
       // Try registering first
-      bot.chat('/register mybot123 mybot123')
+      bot.chat('/register mybot1234 mybot1234')
 
       // Then try logging in
       setTimeout(() => {
-        bot.chat('/login mybot123')
+        bot.chat('/login mybot1234')
       }, 2000) // 2 seconds after /register
     }, 5000)
   })
