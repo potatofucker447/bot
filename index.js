@@ -2,7 +2,7 @@ const mineflayer = require('mineflayer')
 
 function createBot() {
   const bot = mineflayer.createBot({
-    host: 'YOUR_SERVER_IP',
+    host: 'prismuniverse.playwithbao.com',
     port: 25565,
     username: 'AFK_Bot',
     auth: 'offline'
