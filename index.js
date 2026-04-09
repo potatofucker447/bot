@@ -11,21 +11,27 @@ function createBot() {
   bot.on('spawn', () => {
     console.log('Joined server')
 
-    // Run /register command after 5 seconds to ensure server is ready
+    // Delay to ensure server is ready
     setTimeout(() => {
+      // Try registering first
       bot.chat('/register mybot123 mybot123')
+
+      // Then try logging in
+      setTimeout(() => {
+        bot.chat('/login mybot123')
+      }, 2000) // 2 seconds after /register
     }, 5000)
   })
 
   bot.on('end', () => {
-    console.log('Reconnecting...')
+    console.log('Disconnected, reconnecting...')
     setTimeout(createBot, 5000)
   })
 
   bot.on('error', console.log)
 }
 
-// Keep hosting service alive
+// Keep hosting alive
 require('http').createServer((req, res) => {
   res.end('alive')
 }).listen(3000)
